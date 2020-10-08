@@ -56,9 +56,9 @@ echo -e "\033[1;33m AGUARDE..."
 echo ""
 
 cd /var/www/html
-wget https://www.dropbox.com/s/sjzgmbjkrzxa5wc/v20.zip > /dev/null 2>&1
-unzip v20.zip > /dev/null 2>&1
-rm -rf v20.zip index.html > /dev/null 2>&1
+wget https://www.dropbox.com/s/o8fb07joyc2j6q8/PAINEL-V.25.zip > /dev/null 2>&1
+unzip PAINEL-V.25.zip > /dev/null 2>&1
+rm -rf PAINEL-V.25.zip index.html > /dev/null 2>&1
 service apache2 restart > /dev/null 2>&1
 sleep 1
 if [[ -e "/var/www/html/pages/system/pass.php" ]]; then
@@ -66,16 +66,16 @@ sed -i "s;1010;$senha;g" /var/www/html/pages/system/pass.php > /dev/null 2>&1
 fi
 sleep 1
 cd
-wget https://raw.githubusercontent.com/backup-new/3/master/banco.sql > /dev/null 2>&1
+wget https://raw.githubusercontent.com/AAAAAEXQOSyIpN2JZ0ehUQ/SSHPLUS-MANAGER-FREE/master/Install/Panel_Web/panel_v25/BD-Painel-v23.sql > /dev/null 2>&1
 sleep 1
-if [[ -e "$HOME/banco.sql" ]]; then
-    mysql -h localhost -u root -p$senha --default_character_set utf8 sshplus < banco.sql
-    rm /root/banco.sql
+if [[ -e "$HOME/BD-Painel-v23.sql" ]]; then
+    mysql -h localhost -u root -p$senha --default_character_set utf8 sshplus < BD-Painel-v23.sql
+    rm /root/BD-Painel-v23.sql
 else
     clear
     echo -e "\033[1;31m ERRO AO IMPORTAR BANCO DE DADOS\033[0m"
     sleep 2
-    rm /root/install > /dev/null 2>&1
+    rm /root/install.sh > /dev/null 2>&1
     exit
 fi
 service apache2 restart > /dev/null 2>&1
@@ -86,12 +86,8 @@ echo '* * * * * root /usr/bin/php /var/www/html/pages/system/cron.sms.php' >> /e
 echo '* * * * * root /usr/bin/php /var/www/html/pages/system/cron.online.ssh.php' >> /etc/crontab
 echo '10 * * * * root /usr/bin/php /var/www/html/pages/system/cron.servidor.php' >> /etc/crontab
 echo '*/30 * * * * root /usr/bin/php /var/www/html/pages/system/cron.limpeza.php' >> /etc/crontab
-echo '*/1 * * * * root /bin/html.sh' >> /etc/crontab
-cd /bin
-wget https://raw.githubusercontent.com/backup-new/3/master/html.sh > /dev/null 2>&1 && chmod 777 html.sh && sed -i -e 's/\r$//' html.sh && ./html.sh
 /etc/init.d/cron reload > /dev/null 2>&1
 /etc/init.d/cron restart > /dev/null 2>&1
-cd
 chmod 777 /var/www/html/admin/pages/servidor/ovpn
 chmod 777 /var/www/html/admin/pages/download
 chmod 777 /var/www/html/admin/pages/faturas/comprovantes
@@ -99,10 +95,10 @@ service apache2 restart > /dev/null 2>&1
 clear
 echo -e "\033[1;32m PAINEL-SSH INSTALADO COM SUCESSO!"
 echo ""
-echo -e "\033[1;36m SEU PAINEL:\033[1;37m http://$IP/admin\033[0m"
+echo -e "\033[1;36m SEU PAINEL:\033[1;37m http://$IP/\033[0m"
 echo -e "\033[1;36m USUARIO:\033[1;37m admin\033[0m"
 echo -e "\033[1;36m SENHA:\033[1;37m admin\033[0m"
 echo ""
-echo -e "\033[1;33m Altere a senha quando logar no painel>> Configuracoes>> Senha Antiga: admin >> Nova Senha: \033[0m"
+echo -e "\033[1;33m Altere a senha quando logar no painel >> Configuracoes>> Senha Antiga: admin >> Nova Senha: \033[0m"
 cat /dev/null > ~/.bash_history && history -c
 rm /root/install
