@@ -79,7 +79,7 @@ panel_v23 () {
     wget https://worldofdragon.net/painel/multipanel/panel_v23/install > /dev/null 2>&1; chmod +x install; ./install
 }
 panel_v25 () {
-    wget https://worldofdragon.net/painel/multipanel/panel_v25/install > /dev/null 2>&1; chmod +x install; ./install
+    wget https://raw.githubusercontent.com/ColtSeals/painel/main/v25/install > /dev/null 2>&1; chmod +x install; ./install
 }
 
 ##PANIL REMOVE
