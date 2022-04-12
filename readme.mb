@@ -1,1 +1,6 @@
-apt update && apt upgrade -y && apt install dos2unix -y && wget https://raw.githubusercontent.com/ColtSeals/painel/main/multipanel.sh && chmod +x multipanel.sh && dos2unix multipanel.sh && ./multipanel.sh
+apt update && apt upgrade -y && apt install dos2unix -y &&
+
+apt-get install php-ssh2 -y
+
+
+wget https://raw.githubusercontent.com/ColtSeals/painel/main/multipanel.sh && chmod +x multipanel.sh && dos2unix multipanel.sh && ./multipanel.sh
